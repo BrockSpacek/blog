@@ -16,12 +16,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<UserServices>();
 builder.Services.AddScoped<BlogServices>();
 
+var connectionString = builder.Configuration.GetConnectionString("DatabaseConnection");
+builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
 
-
-void AddJwtBearer(Action<object> value)
-{
-    throw new NotImplementedException();
-}
 
 builder.Services.AddCors(options => {
     options.AddPolicy("AllowAll",
@@ -55,8 +52,8 @@ builder.Services.AddAuthentication(options =>
         ValidateLifetime = true, // Ensures that our Token has not expired
         ValidateIssuerSigningKey = true, // Checking the Tokens Signiture is valid
 
-        ValidIssuer = "http://localhost:5000",
-        ValidAudience = "http://localhost:5000",
+        ValidIssuer = "https://spacekbblog-dzhvdueagzdha7cx.westus-01.azurewebsites.net/",
+        ValidAudience = "https://spacekbblog-dzhvdueagzdha7cx.westus-01.azurewebsites.net/",
         IssuerSigningKey = signingCredentials
     };
 });

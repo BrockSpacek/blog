@@ -83,8 +83,8 @@ namespace blog.Services
             var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
             var tokenOptions = new JwtSecurityToken(
-                issuer: "http://localhost:5000", 
-                audience: "http://localhost:5000",
+                issuer: "https://spacekbblog-dzhvdueagzdha7cx.westus-01.azurewebsites.net/", 
+                audience: "https://spacekbblog-dzhvdueagzdha7cx.westus-01.azurewebsites.net/",
                 claims: claims,
                 expires: DateTime.Now.AddMinutes(30),
                 signingCredentials: signingCredentials

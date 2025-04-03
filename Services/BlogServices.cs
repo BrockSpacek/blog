@@ -12,7 +12,8 @@ namespace blog.Services
     {
         private readonly DataContext _dataContext;
 
-        public BlogServices(DataContext dataContext){
+        public BlogServices(DataContext dataContext)
+        {
             _dataContext = dataContext;
         }
 
